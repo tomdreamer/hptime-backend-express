@@ -2,26 +2,34 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // services are an embedded doc objects, each Hospital 0:n services
-const hospitalSchema = new Schema(
+const AlternativeFacilitySchema = new Schema(
   {
-    identifier: String,
+    shortname: String,
     type: String,
     managerEntity: String,
     acronym: String,
-    group: String,
     name: String,
     streetNumber: String,
     streetName: String,
     roadType: String,
+    streetName: String,
     zipCode: String,
-    cedex: String,
     city: String,
     country: String,
     phoneNumber: String,
+    secondPhoneNumber: String,
+    patientType: String,
+    pathology: String,
+    monday: String,
+    tuesday: String,
+    wednesday: String,
+    thursday: String,
+    friday: String,
+    saturday: String,
+    sunday: String,
+    publicHoliday: String,
     latitude: Number,
-    longitude: Number,
-    urlToPlan: String,
-    availablePoles: []
+    longitude: Number
   },
   {
     timestamps: {
@@ -31,5 +39,8 @@ const hospitalSchema = new Schema(
   }
 );
 
-const Hospital = mongoose.model("Hospital", hospitalSchema);
-module.exports = Hospital;
+const AlternativeFacility = mongoose.model(
+  "AlternativeFacility",
+  AlternativeFacilitySchema
+);
+module.exports = AlternativeFacility;

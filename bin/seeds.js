@@ -22,12 +22,30 @@ mongoose
 
 let users = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt))
+    username: "admin@admin.com",
+    role: "admin",
+    password: bcrypt.hashSync("admin@admin.com", bcrypt.genSaltSync(bcryptSalt))
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt))
+    username: "dispatch@dispatch.com",
+    role: "dispatch",
+    password: bcrypt.hashSync(
+      "dispatch@dispatch.com",
+      bcrypt.genSaltSync(bcryptSalt)
+    )
+  },
+  {
+    username: "paramedic@paramedic.com",
+    role: "paramedic",
+    password: bcrypt.hashSync(
+      "paramedic@paramedic.com",
+      bcrypt.genSaltSync(bcryptSalt)
+    )
+  },
+  {
+    username: "user@user.com",
+    role: "user",
+    password: bcrypt.hashSync("user@user.com", bcrypt.genSaltSync(bcryptSalt))
   }
 ];
 
