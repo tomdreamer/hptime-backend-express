@@ -9,10 +9,27 @@ Run \$ npm install
 Seed users roles (admin, dispatch, paramadics and users)
 \$ node bin/seeds.js
 
-Seed MongoDB with hospitals, corresponding services and alternatives structures :
+Seed MongoDB with users, hospitals, corresponding services and alternatives structures :
+$ node bin/seeds.js
 $ node bin/seed-hospitals.js  
 $ node bin/seed-hospitals-services  
-\$ node bin/seed-alternative-facilities.js
+$ node bin/seed-alternative-facilities.js
 
 Fill PORT=5555 (env file) and start the server :
 \$ npm run-script dev
+
+## Api endpoints
+
+### GET requests
+
+http://localhost:2999/api/hospitals gives a list of 5 hospitals sorted by name (index)
+http://localhost:2999/api/hospitals?size=20?offset=20 (show the 20-40 hospitals)
+http://localhost:2999/api/hospitals/page/
+http://localhost:2999/api/hospitals/:hospitalIdentifier gives you one result (show)
+TODO (add)
+TODO (edit)
+
+### POST requests
+
+TODO (new)
+TODO (delete)
