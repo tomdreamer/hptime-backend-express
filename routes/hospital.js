@@ -1,8 +1,7 @@
 const express = require("express");
-
-const Hospital = require("../models/hospital.js");
-
+const Hospital = require("../models/hospital");
 const router = express.Router();
+
 router.get("/hospital/:hospitalIdentifier([0-9]+)", (req, res, next) => {
   const { hospitalIdentifier } = req.params;
   Hospital.findOne({ identifier: hospitalIdentifier })

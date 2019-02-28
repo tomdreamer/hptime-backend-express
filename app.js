@@ -59,7 +59,10 @@ app.use(
 const authRoutes = require("./routes/auth");
 app.use("/api", authRoutes);
 
-const hospital = require("./routes/hospital.js");
+const hospital = require("./routes/hospital");
 app.use("/api", hospital);
+
+const alternativeStructures = require("./routes/alternativeStructures");
+app.use("/api", alternativeStructures);
 
 module.exports = app;
