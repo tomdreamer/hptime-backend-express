@@ -1,4 +1,4 @@
-// seed hospitals
+// seed alt facilities (clinics, doctor with unscheduled appointments and small care houses)
 const mongoose = require("mongoose");
 const AlternativeFacility = require("../models/AlternativeFacility");
 const jsonData = require("./DataAlternativeFacilities.json");

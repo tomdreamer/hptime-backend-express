@@ -1,5 +1,4 @@
 // connect with mangoose and seed services into hospitals
-// $ node bin/seeds.js
 
 const mongoose = require("mongoose");
 const Hospital = require("../models/hospital");
@@ -18,10 +17,6 @@ mongoose
 
 // find each hospital by identifier and push services into the corresponding one
 let newArr = jsonData.map((serviceObj, index, arr) => {
-  // Hospital.find({ identifier: item.identifier }, function(err, docs) {
-  //   docs.availablePoles.push({ item });
-  //   console.log(item.pathology, "was inserted into hospital named:", docs.name);
-  // });
   Hospital.findOneAndUpdate(
     { identifier: serviceObj.identifier },
     { $push: { availablePoles: serviceObj } },

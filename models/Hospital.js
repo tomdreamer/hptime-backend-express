@@ -20,7 +20,7 @@ const hospitalSchema = new Schema(
     phoneNumber: String,
     latitude: Number,
     longitude: Number,
-    urlToPlan: String,
+    urlToPlan: { type: String, match: /^https?:\/\// },
     availablePoles: []
   },
   {
