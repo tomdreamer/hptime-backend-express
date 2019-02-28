@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Enable authentication using session + passport
 app.use(
   session({
-    secret: "karl is still alive and this need to get in env asap",
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
@@ -48,18 +48,18 @@ app.use(
 
 require("./passport")(app);
 
-const index = require("./routes/index");
-app.use("/", index);
-
-const authRoutes = require("./routes/auth");
-app.use("/auth", authRoutes);
-
-// Enable CORS from react frontend with cookies!
+// enable CORS from react frontend with cookies!
 app.use(
   cors({
     credentials: true,
     origin: ["http://localhost:3000"]
   })
 );
+
+const authRoutes = require("./routes/auth");
+app.use("/api", authRoutes);
+
+const hospital = require("./routes/hospital.js");
+app.use("/api", hospital);
 
 module.exports = app;
