@@ -15,4 +15,4 @@ $ node bin/seed-hospitals-services
 \$ node bin/seed-alternative-facilities.js
 
 Fill PORT=5555 (env file) and start the server :
-\$ npm run-start-dev
+\$ npm run-script dev
