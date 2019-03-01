@@ -11,6 +11,34 @@ router.get("/login", (req, res, next) => {
   res.render("auth/login", { message: req.flash("error") });
 });
 
+router.post("/process-signup", (req, res, next) => {
+  const { username, password } = req.body;
+
+  // // enforce password rules (can't be empty and MUST have a digit)
+  // if (!originalPassword || !originalPassword.match(/[0-9]/)) {
+  //   next(new Error("Password can't be blank and can't contain a number"));
+  //   // use return to STOP the function here if the password is BAD
+  //   return;
+  // }
+
+  // encrypt the user's password before saving it
+  // const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
+  // console.log("coucou juste avant create", {
+  //   username,
+  //   encryptedPassword
+  // });
+  User.create({ username, password })
+    .then(userDoc => {
+      req.logIn(userDoc, () => {
+        // hide encrypted password before sending the json (its a security risk)
+        userDoc.encryptedPassword = undefined;
+        res.json(userDoc);
+        res.redirect("/");
+      });
+    })
+    .catch(err => next(err));
+});
+
 router.post(
   "/login",
   passport.authenticate("local", {
