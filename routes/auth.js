@@ -39,6 +39,45 @@ router.post("/process-signup", (req, res, next) => {
     .catch(err => next(err));
 });
 
+router.post("/process-login", (req, res, next) => {
+  const { username, password } = req.body;
+
+  // validate the email by searching the database for an account with that email
+  User.findOne({ username: { $eq: username } })
+    .then(userDoc => {
+      // User.findOne() will give us NULL in userDoc if it found nothing
+      if (!userDoc) {
+        //this is like next(err) but we are creating ur own error object
+        next(new Error("error", "Email is incorrect. 🤦‍♂️"));
+        // use return to STOP the function here if the EMAIL is BAD
+        return;
+      }
+
+      // const { password } = userDoc;
+
+      // // validate the password by using bcrypt.compareSync()
+      // // (bcrypt.compareSync() will return FALSE if the passwords don't match)
+      // if (!bcrypt.compareSync(originalPassword, encryptedPassword)) {
+      //   next(new Error("Password is incorrect"));
+
+      //   return;
+      // }
+
+      // email & password are CORRECT!
+      // if we MANUALLY managed the user session
+      // req.session.userId = userDoc._id;
+
+      // instead we'll use PASSPORT – an npm package for managing user sessions
+      // req.logIn() is a Passport method that calls serializeUser()
+      // (that saves the USER ID in the session which means we are logged-in)
+      req.logIn(userDoc, () => {
+        userDoc.password = undefined;
+        res.json(userDoc);
+      });
+    })
+    .catch(err => next(err));
+});
+
 router.post(
   "/login",
   passport.authenticate("local", {
@@ -87,8 +126,10 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
+  console.log("logged");
+
+  req.logOut();
+  res.json({ message: "You are logged out!" });
 });
 
 module.exports = router;
