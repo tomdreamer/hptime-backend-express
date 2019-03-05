@@ -29,7 +29,11 @@ const AlternativeFacilitySchema = new Schema(
     sunday: String,
     publicHoliday: String,
     latitude: Number,
-    longitude: Number
+    longitude: Number,
+    location: {
+      type: { type: String },
+      coordinates: [Number]
+    }
   },
   {
     timestamps: {
@@ -38,7 +42,7 @@ const AlternativeFacilitySchema = new Schema(
     }
   }
 );
-
+AlternativeFacilitySchema.index({ location: "2dsphere" });
 const AlternativeFacility = mongoose.model(
   "AlternativeFacility",
   AlternativeFacilitySchema
