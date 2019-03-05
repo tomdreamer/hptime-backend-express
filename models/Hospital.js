@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 // services are an embedded doc objects, each Hospital 0:n services
 const hospitalSchema = new Schema(
   {
-    identifier: String,
+    identifier: {
+      type: String,
+      required: true,
+      unique: true
+    },
     type: String,
     managerEntity: String,
     acronym: String,
@@ -20,6 +24,10 @@ const hospitalSchema = new Schema(
     phoneNumber: String,
     latitude: Number,
     longitude: Number,
+    location: {
+      type: { type: String },
+      coordinates: [Number]
+    },
     urlToPlan: { type: String, match: /^https?:\/\// },
     availablePoles: []
   },
@@ -31,5 +39,6 @@ const hospitalSchema = new Schema(
   }
 );
 
+hospitalSchema.index({ location: "2dsphere" });
 const Hospital = mongoose.model("Hospital", hospitalSchema);
 module.exports = Hospital;
