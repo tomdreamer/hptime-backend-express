@@ -3,14 +3,23 @@
 const http = require("http");
 const path = require("path");
 
+// reference the front end folder inside public
+const path = require("path");
+
 let app = require("../app");
 
+<<<<<<< HEAD
 // catch 404 and render a not-found.hbs template
+=======
+// catch 404 and render a json response
+// use 404 handler just for api request starting with /api
+>>>>>>> ed90d733d9d4320a1985c0f5a23f899ae73afeb4
 app.use("/api", (req, res, next) => {
   res.status(404);
   res.json({ status: 404, message: "Route Not Found" });
 });
 
+<<<<<<< HEAD
 //send React's HTML file for URLs that don't begin with /api
 // (the React router will handle thos.URLs)
 app.use((req,res,next)=>{
@@ -18,6 +27,12 @@ app.use((req,res,next)=>{
 })
 
 
+=======
+// redirect any request other than /api to ../public/index.html (frontend react app)
+app.use((req, res, next) => {
+  res.sendFile(path.resolve(__dirname, "..", "public", "index.html"));
+});
+>>>>>>> ed90d733d9d4320a1985c0f5a23f899ae73afeb4
 
 app.use((err, req, res, next) => {
   // always log the error
