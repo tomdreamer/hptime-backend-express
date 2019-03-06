@@ -1,6 +1,6 @@
 // seed hospitals
 const mongoose = require("mongoose");
-const Hospital = require("../models/hospital");
+const Hospital = require("../models/Hospital");
 const jsonData = require("./DataHospitals.json");
 
 mongoose
