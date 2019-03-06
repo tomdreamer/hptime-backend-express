@@ -29,7 +29,7 @@ router.get("/hospitals/near", (req, res, next) => {
   let { latitude = 48.864716, longitude = 2.349014, radius = 2500 } = req.query;
 
   // axios request structure as follow
-  //  http://localhost:2999/api/hospitals/near?latitude=48.867250&longitude=2.363540&radius=5000
+  //  http://localhost:2999/api/hospitals/near?latitude=48.867250&longitude=2.363540&radius=50000
   //  2.363540 (republique)
   // using mongoDB near
 
