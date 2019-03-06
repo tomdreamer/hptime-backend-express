@@ -11,6 +11,14 @@ app.use("/api", (req, res, next) => {
   res.json({ status: 404, message: "Route Not Found" });
 });
 
+//send React's HTML file for URLs that don't begin with /api
+// (the React router will handle thos.URLs)
+app.use((req,res,next)=>{
+  res.sendFile(path.resolve(__dirname, "..", "public", "index.html"))
+})
+
+
+
 app.use((err, req, res, next) => {
   // always log the error
   console.error("ERROR", req.method, req.path, err);
