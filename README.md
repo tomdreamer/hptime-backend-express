@@ -9,7 +9,8 @@ Run \$ npm install
 Seed users roles (admin, dispatch, paramadics and users)
 \$ node bin/seeds.js
 
-Seed MongoDB with users, hospitals, corresponding services and alternatives structures :
+Seed MongoDB with users, hospitals, corresponding services a
+nd alternatives structures :
 $ node bin/seeds.js
 $ node bin/seed-hospitals.js  
 $ node bin/seed-hospitals-services  
