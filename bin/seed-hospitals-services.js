@@ -1,7 +1,7 @@
 // connect with mangoose and seed services into hospitals
 
 const mongoose = require("mongoose");
-const Hospital = require("../models/hospital");
+const Hospital = require("../models/Hospital");
 const jsonData = require("./dataHospitalServices.json");
 
 mongoose
