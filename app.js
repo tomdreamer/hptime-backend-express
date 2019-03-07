@@ -65,4 +65,7 @@ app.use("/api", hospital);
 const alternativeStructures = require("./routes/alternativeStructures");
 app.use("/api", alternativeStructures);
 
+const altStructureAndHospitals = require("./routes/altStructureAndHospitals");
+app.use("/api", altStructureAndHospitals);
+
 module.exports = app;

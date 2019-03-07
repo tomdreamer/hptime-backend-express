@@ -3,6 +3,8 @@
 const mongoose = require("mongoose");
 const Hospital = require("../models/Hospital");
 const jsonData = require("./dataHospitalServices.json");
+const dotenv = require("dotenv");
+dotenv.config();
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
