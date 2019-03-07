@@ -6,9 +6,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-
+const dotenv = require("dotenv");
+dotenv.config();
 const bcryptSalt = 10;
-
+// https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {

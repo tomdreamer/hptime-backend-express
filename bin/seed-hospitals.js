@@ -1,7 +1,12 @@
 // seed hospitals
 const mongoose = require("mongoose");
-const Hospital = require("../models/hospital");
+const Hospital = require("../models/Hospital");
 const jsonData = require("./DataHospitals.json");
+const dotenv = require("dotenv");
+dotenv.config();
+// Calling files is case sensitive on Heroku
+// heroku run bash && cd bin && ls
+// https://stackoverflow.com/a/19348043/3468846
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })

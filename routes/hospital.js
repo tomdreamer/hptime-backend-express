@@ -1,5 +1,5 @@
 const express = require("express");
-const Hospital = require("../models/hospital");
+const Hospital = require("../models/Hospital");
 const router = express.Router();
 
 router.get("/hospital/:hospitalIdentifier([0-9]+)", (req, res, next) => {
