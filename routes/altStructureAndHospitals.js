@@ -1,11 +1,10 @@
 const express = require("express");
-//const AlternativeFacility = require("../models/AlternativeFacility");
+const AlternativeFacility = require("../models/AlternativeFacility");
 //const Hospital = require("../models/hospital");
 const router = express.Router();
 
 router.get("/structure-details/:structureId", (req, res, next) => {
   const { structureId } = req.params;
-  console.log(structureId);
   AlternativeFacility.findById(structureId)
     // send the DB query result document as a JSON response to the client
     .then(structureDoc => {
