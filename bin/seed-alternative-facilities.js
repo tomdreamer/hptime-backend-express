@@ -2,6 +2,8 @@
 const mongoose = require("mongoose");
 const AlternativeFacility = require("../models/AlternativeFacility");
 const jsonData = require("./DataAlternativeFacilities.json");
+const dotenv = require("dotenv");
+dotenv.config();
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
